@@ -1,8 +1,14 @@
 node "app.vagrant.local" {
+  $tomcat_port = "8080"
+
   class { "varnish_rhel":
     varnish_data_directory => "/var/lib/varnish",
     varnish_storage_size   => "10M",
     varnish_listen_port    => 80
+  }
+
+  varnish_rhel::vcl { "/etc/varnish/default.vcl":
+    vcl_content => template("varnish/etc/varnish/default.vcl.erb")
   }
 
   user { "java":
@@ -14,7 +20,7 @@ node "app.vagrant.local" {
   tomcat7_rhel::tomcat_application { "example-servlet":
     application_root => "/opt",
     tomcat_user => "java",
-    tomcat_port => "8080",
+    tomcat_port => $tomcat_port,
     jvm_envs => "-server -Xmx1024m -XX:MaxPermSize=64m -Driak_ip=10.10.10.11 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false  -Dcom.sun.management.jmxremote.ssl=false",
     tomcat_manager => true,
     tomcat_admin_user => "java",
