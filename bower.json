@@ -2,9 +2,9 @@
     "name":  "puppet-workshop",
     "version": "1.0.0",
     "dependencies": {
-        "tomcat7_rhel": "git@github.com:rback/tomcat7_rhel.git#2.6",
-        "varnish_rhel": "git@github.com:rback/varnish_rhel.git#1.0",
-		"riak": "git@github.com:rback/riak_puppet.git#1.0"
+        "tomcat7_rhel": "git@github.com:rback/tomcat7_rhel.git#3",
+        "varnish_rhel": "git@github.com:rback/varnish_rhel.git#1",
+		"riak": "git@github.com:rback/riak_puppet.git#1"
     },
     "private": "true"
 }
