@@ -1,6 +1,7 @@
 puppet-workshop
 ===============
 
+    bower install
     vagrant up app
     curl -O download.reaktor.fi/devopskoulu/example-servlet-trunk-SNAPSHOT.war
     vagrant ssh app
